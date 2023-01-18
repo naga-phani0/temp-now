@@ -12,7 +12,7 @@ jobs:
         id: regex-match
         with:
           text: ${{ github.event.comment.body }}
-          regex: '2nd line'
+          regex: '2nd l'
 
       - uses: actions-ecosystem/action-add-labels@v1
         if: ${{ steps.regex-match.outputs.match != '' }}
