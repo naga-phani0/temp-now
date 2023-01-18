@@ -22,7 +22,7 @@ for i in glob.iglob('*.py'):
                 print(word, 'found in file', i)
                 sys.exit(1)
 
-            if word_ in must:
+            elif word_ in must:
                 print(word_, 'found in file', i)
                 sys.exit(0)
 
