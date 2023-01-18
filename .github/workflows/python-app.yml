@@ -40,3 +40,6 @@ jobs:
           do
             pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
           done
+    - name: Lint with pylint
+      run: |
+        python pylin.py
