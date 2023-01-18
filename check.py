@@ -24,7 +24,7 @@ for i in glob.iglob('*.py'):
 
             elif word_ in must:
                 print(word_, 'found in file', i)
-                sys.exit(0)
+                # sys.exit(0)
 
 
 
