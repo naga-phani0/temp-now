@@ -30,7 +30,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        export PYTHONPATH=src
+        pytest
+#        export PYTHONPATH=src
     - name: Lints each python file and fails if pylint score is less than 6.0
       run: |
           for file in $(find -name '*.py')
