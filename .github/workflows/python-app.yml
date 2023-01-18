@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flask pytest
         pip install pylint
-        pip install requests
+          
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 #    - name: Test with pytest
 #      run: |
@@ -44,6 +44,6 @@ jobs:
 #    - name: Lint with pylint
 #      run: |
 #        python pylin.py
-    - name: Regular exp
+    - name: Checking unwanted methods and 
       run: |
         python check.py

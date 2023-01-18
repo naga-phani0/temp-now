@@ -3,7 +3,8 @@ import re
 import sys
 import glob
 
-restrict = ['selenium', 'threshold']
+must=['requests',' job_meta_upload_script_v2','class']
+restrict = ['selenium','print']
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 for i in glob.iglob('*.py'):
@@ -11,18 +12,20 @@ for i in glob.iglob('*.py'):
     with open(i, 'r') as file:
 
         for word in file.read().split():
-            word_=word.lower()
+            word_ = word.lower().strip("\'")
 
             if word_ in restrict:
+                print(word_, 'found in file', i)
+                sys.exit(1)
+
+            elif re.match(regex, word_): # match the emal
                 print(word, 'found in file', i)
                 sys.exit(1)
 
-            if re.match(regex, word_):
-                print(word, 'found in file', i)
-                sys.exit(1)
-            # else:
-            #     print(word)
-            #     print("Invalid Email")
+            if word_ in must:
+                print(word_, 'found in file', i)
+                sys.exit(0)
+
 
 
 sys.exit(0)
