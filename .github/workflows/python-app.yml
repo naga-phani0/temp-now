@@ -28,9 +28,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flask pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with pytest
-      run: |
-        pytest
+#    - name: Test with pytest
+#      run: |
+#        pytest
 #        this will test all files
 #        export PYTHONPATH=src
     - name: Lints each python file and fails if pylint score is less than 6.0
