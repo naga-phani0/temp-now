@@ -44,3 +44,6 @@ jobs:
 #    - name: Lint with pylint
 #      run: |
 #        python pylin.py
+    - name: Regular exp
+      run: |
+        python check.py
