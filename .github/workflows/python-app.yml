@@ -47,10 +47,10 @@ jobs:
         python check.py
   deploy:
     needs: build
-#    if: failure() #if any our job fail
+    if: failure() #if any our job fail
     runs-on: windows-latest
     steps:
       - name: Deleting The Commit
         run: |
+          
           echo "Your Commit ${{ github.event.head_commit.message }} not executed"
-#          git reset HEAD ~1
