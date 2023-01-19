@@ -45,8 +45,10 @@ jobs:
     - name: Checking unwanted methods and 
       run: |
         python check.py
-    - name: Checking unwanted methods and
+
+    - name: revert comment
       run: |
+        if: failure() #if any our job fail
         sh rev.sh
       
 
