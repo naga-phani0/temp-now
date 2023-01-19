@@ -45,12 +45,13 @@ jobs:
     - name: Checking unwanted methods and 
       run: |
         python check.py
-  deploy:
-    needs: build
-#    if: failure() #if any our job fail
+  Failed:
+#    needs: build
+    if: failure() #if any our job fail
     runs-on: windows-latest
     steps:
       - name: Deleting The Commit
         run: |
-          echo "Your Commit ${{ github.event.head_commit.message }} not executed"
-#          git reset HEAD ~1
+          echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
+          git revert --no-edit HEAD
+          
