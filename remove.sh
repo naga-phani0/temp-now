@@ -1,4 +1,5 @@
-! /bin/bash
+
+#! /bin/bash
 #to revert comment
 #git revert HEAD
 #
@@ -6,4 +7,4 @@
 #
 #
 # entra edi
-git reset --hard HEAD~1
+#git reset --hard HEAD~1
