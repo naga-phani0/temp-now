@@ -51,7 +51,7 @@ jobs:
     if: failure() #if any our job fail
     runs-on: windows-latest
     steps:
-      -name: Deleting The Commit
-        run:|
-        git revert HEAD
-        echo "Your Commit ${{ github.event.head_commit.message }} not executed"
+      - name: Deleting The Commit
+        run: |
+          git revert HEAD
+          echo "Your Commit ${{ github.event.head_commit.message }} not executed"
