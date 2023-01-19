@@ -54,5 +54,4 @@ jobs:
       - name: Deleting The Commit
         run: |
           echo "Your Commit ${{ github.event.head_commit.message }} not executed"
-
-#          git reset HEAD
+          git reset HEAD ~1
