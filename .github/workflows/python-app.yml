@@ -46,18 +46,21 @@ jobs:
       run: |
         python check.py
 
-    - name: revert comment
-      run: |
-        if: failure() #if any our job fail
-        sh rev.sh
-      
 
-  Deploy:
-    needs: build
-#    if: failure() #if any our job fail
+  If_Failed:
+#    needs: build
+    if: failure() #if any our job fail
     runs-on: ubuntu-latest
     steps:
       - name: Deleting The Commit
         run: |
           echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
-          
+          sh rev.sh
+
+    Deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployed
+        run: |
+          echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
