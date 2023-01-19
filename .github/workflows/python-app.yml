@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  Check:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,8 +45,8 @@ jobs:
     - name: Checking unwanted methods and 
       run: |
         python check.py
-  deploy:
-    needs: build
+  Deploy:
+    needs: Check
 #    if: failure() #if any our job fail
     runs-on: windows-latest
     steps:
