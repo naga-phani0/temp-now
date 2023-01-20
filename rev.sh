@@ -1,4 +1,4 @@
-# /bin/bach
+# /bin/bash
 
 git init
 
