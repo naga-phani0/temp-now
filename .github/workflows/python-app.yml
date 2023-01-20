@@ -42,10 +42,9 @@ jobs:
 #    - name: Lint with pylint
 #      run: |
 #        python pylin.py
-    - name: Checking unwanted methods and 
+    - name: Checking unwanted methods or credentials in files
       run: |
         python check.py
-
 
   If_Failed:
 #    needs: build
@@ -55,7 +54,7 @@ jobs:
       - name: Deleting The Commit
         run: |
           echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
-          sh rev.sh
+          bash ${GITHUB_WORKSPACE}/rev.sh
 
   Deploy:
     needs: build

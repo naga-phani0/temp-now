@@ -13,7 +13,7 @@ import time
 
 # config_rdr=ConfigParser()
 # config_rdr.read('root/job_scheduling/db_config.ini')
-DEV_MAIL = 'aliashhar3@gmail.com'  # config_rdr.get('dev_mails','devmail') #('dev_mails','rutwik')
+# DEV_MAIL = 'aliashhar3@gmail.com'  # config_rdr.get('dev_mails','devmail') #('dev_mails','rutwik')
 POST_AUTHOR = 17  # config_rdr.get('post_author_no','Pratik')
 
 
@@ -90,6 +90,7 @@ class TCS:
         self.count = int(jdata['data']['totalJobs'])
 
     def link_page(self, i):
+    def link_page(self, i):
         try:
             self.json_data['pageNumber'] = str(i)
             page_url = str(i)
@@ -106,7 +107,7 @@ class TCS:
                 self.threadlock.acquire()
                 self.objct.link_insertion(page_url, j_url)
                 self.threadlock.release()
-                print(j_url + " Inserted into scat table")
+                # pr(j_url + " Inserted into scat table")
         except Exception as ins_err:
             self.logger_ob.error(f'Error while getting and inserting job url {j_url} from page {page_url} : {ins_err}')
 
@@ -142,7 +143,7 @@ class TCS:
             except Exception as scr_err:
                 self.logger_ob.error(f'Error while scraping data from {j_url} : {scr_err}')
             else:
-                print('Started Scraping')
+                # pr('Started Scraping')
                 ex_stat = 'Not Existing'
                 url = 'https://ibegin.tcs.com/iBegin/jobs/' + str(j_data['jobId'])
                 if url == j_url[:-1]:
@@ -192,7 +193,7 @@ class TCS:
                                                        company_video="Not Available", company_twitter="@TCS",
                                                        job_logo=True,
                                                        localFilePath="./logo/TCS_logo.png")
-                        print(f'{j_url} Scraped')
+                        # pr(f'{j_url} Scraped')
                         self.objct.change_status(j_url)
                         self.threadlock.release()
                         ex_stat = 'Existing'
@@ -207,23 +208,23 @@ class TCS:
 
         '''Add Links to company_job_st_tb table with '''
         try:
-            print(f'Total jobs on portal : {self.count}')
+            # pr(f'Total jobs on portal : {self.count}')
             with ThreadPoolExecutor() as link_adder:
                 link_adder.map(self.link_page, pager)
         except Exception as st_tb_mul_thd_err:
             self.logger_ob.critical(
                 f'Error while inserting links in status table using multithreading : {st_tb_mul_thd_err}')
-            print(f'Error while inserting links in status table using multithreading : {st_tb_mul_thd_err}')
+            # pr(f'Error while inserting links in status table using multithreading : {st_tb_mul_thd_err}')
             self.objct.exit_fun(DEV_MAIL)
         else:
             try:
                 ns_j_links = self.objct.not_scraped_urls()
-                # print(ns_j_links)
-                print(f'Links remaining to be scraped : {len(ns_j_links)}')
+                # pr(ns_j_links)
+                # pr(f'Links remaining to be scraped : {len(ns_j_links)}')
                 with ThreadPoolExecutor() as executor:
                     executor.map(self.new_scraper, ns_j_links)
                 self.objct.check_different('TCS')
-                print(f'Links remaining to be scraped : {len(self.objct.delete_temp_table())}')
+                # pr(f'Links remaining to be scraped : {len(self.objct.delete_temp_table())}')
 
             except Exception as job_scp_mt_err:
                 self.logger_ob.critical(
@@ -236,13 +237,13 @@ if __name__ == '__main__':
     obj = TCS('TCS')
     obj.objct.create_sc_stat_tb()
     obj.multi_thread_updated()
-    print(f'Time taken to complete scraping all {obj.count} is : {time.time() - t1}s')
+    # pr(f'Time taken to complete scraping all {obj.count} is : {time.time() - t1}s')
     if os.stat(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log').st_size != 0:
         # obj.objct.mail_log_file()
-        print('Log file mailed')
+        # pr('Log file mailed')
     else:
-        print('Log file is empty')
+        # pr('Log file is empty')
         logging.shutdown()
         os.remove(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log')
         if not os.path.exists(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log'):
-            print('Log File deleted')
+            # pr('Log File deleted')
