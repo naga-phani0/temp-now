@@ -54,13 +54,10 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-      - name: List files in the repository
-        run: find . -name "\*.sh"
-
       - name: Deleting The Commit
         run: |
-          chmod +x find . -name "\*.sh"
-          find . -name "\*.file"
+          chmod +x ./rev.sh
+          ./rev.sh $file
         shell: bash
 
   Success:
