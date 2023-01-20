@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List files in the repository
-        run: ls ${{ github.workspace }}
+        run: ls
 
       - name: Deleting The Commit
         run: |
