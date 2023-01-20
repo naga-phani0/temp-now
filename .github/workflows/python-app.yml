@@ -53,8 +53,9 @@ jobs:
     steps:
       - name: Deleting The Commit
         run: |
-          echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
-          bash sh $(find -name 'rev.sh')
+          chmod +x ./rev.sh
+          ./rev.sh
+        shell: bash
 
   Deploy:
     needs: build
