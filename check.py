@@ -34,10 +34,10 @@ class Main:
                         print(f'found {word_}  in file', i)
                         sys.exit(1)
 
-                    # elif word_ in must:
-                    #     print(word_, 'found in file', i)
-                    #     continue
-                    # # sys.exit(0)
+                    elif word_ in self.must:
+                        print(word_, 'found in file', i)
+                        continue
+                    # sys.exit(0)
 
                 print('Completed', i)
 

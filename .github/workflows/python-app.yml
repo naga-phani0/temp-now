@@ -54,11 +54,11 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-  #      - name: Deleting The Commit
-#        run: |
-#          chmod +x ./rev.sh
-#          ./rev.sh
-#        shell: bash
+      - name: Deleting The Commit
+        run: |
+          chmod +x .temp-now/rev.sh
+          .temp-now/rev.sh
+        shell: bash
 
   Success:
     needs: build

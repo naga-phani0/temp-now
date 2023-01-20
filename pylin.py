@@ -3,7 +3,6 @@ from pylint import lint
 
 THRESHOLD = 8
 
-
 run = lint.Run(["file.py"], do_exit=False)
 score = run.linter.stats["global_note"]
 
