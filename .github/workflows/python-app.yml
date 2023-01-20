@@ -56,7 +56,7 @@ jobs:
 
       - name: Deleting The Commit
         run: |
-          chmod +x .temp-now/rev.sh
+          chmod +x ./temp-now/rev.sh
           .temp-now/rev.sh
         shell: bash
 
