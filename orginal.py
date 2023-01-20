@@ -90,7 +90,7 @@ class TCS:
         self.count = int(jdata['data']['totalJobs'])
 
     def link_page(self, i):
-    def link_page(self, i):
+
         try:
             self.json_data['pageNumber'] = str(i)
             page_url = str(i)
@@ -109,7 +109,8 @@ class TCS:
                 self.threadlock.release()
                 # pr(j_url + " Inserted into scat table")
         except Exception as ins_err:
-            self.logger_ob.error(f'Error while getting and inserting job url {j_url} from page {page_url} : {ins_err}')
+            self.logger_ob.error(
+                f'Error while getting and inserting job url {j_url} from page {page_url} : {ins_err}')
 
     def new_scraper(self, pj_url):
         try:
@@ -239,11 +240,11 @@ if __name__ == '__main__':
     obj.multi_thread_updated()
     # pr(f'Time taken to complete scraping all {obj.count} is : {time.time() - t1}s')
     if os.stat(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log').st_size != 0:
-        # obj.objct.mail_log_file()
-        # pr('Log file mailed')
+    # obj.objct.mail_log_file()
+    # pr('Log file mailed')
     else:
         # pr('Log file is empty')
         logging.shutdown()
         os.remove(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log')
         if not os.path.exists(f'{obj.company}_logs_{date.today().strftime("%d_%m_%Y")}.log'):
-            # pr('Log File deleted')
+    # pr('Log File deleted')
