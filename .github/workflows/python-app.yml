@@ -51,9 +51,8 @@ jobs:
     if: failure() #if any our job fail
     runs-on: ubuntu-latest
     steps:
-      - name: list
-        run: |
-          ls ${{ github.workspace }}
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
 
   #      - name: Deleting The Commit
 #        run: |
