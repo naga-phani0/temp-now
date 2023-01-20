@@ -47,7 +47,7 @@ jobs:
         python check.py
 
   If_Failed:
-#    needs: build
+    needs: build
     if: failure() #if any our job fail
     runs-on: ubuntu-latest
     steps:
