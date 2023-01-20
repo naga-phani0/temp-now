@@ -146,6 +146,7 @@ class TCS:
                 ex_stat = 'Not Existing'
                 url = 'https://ibegin.tcs.com/iBegin/jobs/' + str(j_data['jobId'])
                 if url == j_url[:-1]:
+                if url == j_url[:-1]:
                     try:
                         job_desc = str(bs4.BeautifulSoup(j_data['description'], "lxml").text) \
                                    + "\nWalk in interview details:\nVenue: " + str(j_data['walkInVenue']) \
