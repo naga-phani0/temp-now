@@ -13,16 +13,6 @@ git config --global user.name "naga-phani0"
 
 git reset --hard HEAD
 
-# git checkout master
-
-git checkout master
-
-# git pull origin master
-
-git pull origin master
-
-# git checkout master
-
 # git push -f #to puch
 
 # + git push --force
