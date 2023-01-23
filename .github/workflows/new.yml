@@ -59,4 +59,4 @@ jobs:
         run: |
           git config --global user.email "kumar@rivan.in"
           git config --global user.name "naga-phani0"
-          git reset HEAD~1 --hard
+          git reset HEAD~1
