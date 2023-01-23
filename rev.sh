@@ -12,8 +12,8 @@ git config --global user.name "naga-phani0"
 # git reset --hard
 git reset --soft HEAD^
 
-# git add .
+git add .
 
-# git commit -m 'Sucessfully reverted'
+git commit -m 'Sucessfully reverted'
 
-# git push origin main
+git push origin main

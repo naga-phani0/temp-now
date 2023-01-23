@@ -55,17 +55,11 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-      # - name: Deleting The Commit
-      #   run: |
-      #     chmod +x ./rev.sh
-      #     ./rev.sh
-      #   shell: bash
       # undo commit in git actions
       - name: Delete the commit
         run: |
-          git config --global user.email "kumar@rivan.in"
-          git config --global user.name "naga-phani0"
-          git reset  HEAD^ --soft
+          chmod +x ./rev.sh
+          ./rev.sh
         shell: bash
 
   Success:
