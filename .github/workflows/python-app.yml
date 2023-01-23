@@ -55,10 +55,14 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-      - name: Deleting The Commit
-        run: |
-          chmod +x ./rev.sh
-          ./rev.sh $file
+      # - name: Deleting The Commit
+      #   run: |
+      #     chmod +x ./rev.sh
+      #     ./rev.sh
+      #   shell: bash
+      # undo commit in git actions
+      - name: Delete the commit
+        run: git reset --hard
         shell: bash
 
   Success:
