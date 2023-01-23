@@ -68,8 +68,8 @@ jobs:
           git reset HEAD~1 --hard
           git checkout master
           # git branch -D ${{ github.branch }}
-
         shell: bash
+        
   Success:
     needs: build
     runs-on: ubuntu-latest
