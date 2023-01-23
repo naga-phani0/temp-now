@@ -65,12 +65,11 @@ jobs:
         run: |
           git config --global user.email "kumar@rivan.in"
           git config --global user.name "naga-phani0"
-          git reset --hard
-          git add .
-          git commit -m 'Sucessfully reverted'
-          git push -u origin main
-        shell: bash
+          git reset HEAD~1 --hard
+          git checkout master
+          # git branch -D ${{ github.branch }}
 
+        shell: bash
   Success:
     needs: build
     runs-on: ubuntu-latest
