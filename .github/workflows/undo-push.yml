@@ -21,7 +21,3 @@ jobs:
         with:
           branch: ${{ github.event.inputs.branch }}
           commit: ${{ github.event.inputs.commit }}
-          message: ${{ github.event.inputs.message }}
-          author: ${{ github.event.inputs.author }}
-          author_date: ${{ github.event.inputs.author_date }}
-          author_date_gmt: ${{ github.event.inputs.author_date_gmt }}
