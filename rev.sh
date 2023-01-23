@@ -13,7 +13,7 @@ git config --global user.name "naga-phani0"
 
 git reset --hard HEAD
 
-# git push -f #to puch
+git push -f #to puch    
 
 # + git push --force
 
