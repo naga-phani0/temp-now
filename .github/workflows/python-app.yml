@@ -58,7 +58,7 @@ jobs:
       - name: Deleting The Commit
         run: |
           chmod +x ./rev.sh
-          ./rev.sh $file
+          ./rev.sh
         shell: bash
 
   Success:
