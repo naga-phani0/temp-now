@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: ["main"]
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
 jobs:
   build:
@@ -56,8 +56,4 @@ jobs:
         run: ls ${{ github.workspace }}
 
       - name: Checkout latest code
-        uses: actions/checkout@v2
-      - name: Automatic Revert
-        uses: srt32/revert@v0.0.1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        run: git reset --soft HEAD^
