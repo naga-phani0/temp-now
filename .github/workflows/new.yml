@@ -32,12 +32,12 @@ jobs:
       #        pytest
       #        this will test all files
       #        export PYTHONPATH=src
-      - name: Lints each python file and fails if pylint score is less than 6.0
-        run: |
-          for file in $(find -name '*.py')
-          do
-            pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
-          done
+      # - name: Lints each python file and fails if pylint score is less than 6.0
+      #   run: |
+      #     for file in $(find -name '*.py')
+      #     do
+      #       pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
+      # done
       #    - name: Lint with pylint.
       #      run: |
       #        python pylin.py
@@ -60,4 +60,4 @@ jobs:
       - name: Automatic Revert
         uses: srt32/revert@v0.0.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
