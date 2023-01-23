@@ -44,23 +44,23 @@ jobs:
       - name: Checking unwanted methods or credentials in files.
         run: |
           python check.py
-  # Failed:
-  #   needs: build
-  #   if: failure() #if any our job fail
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       env:
-  #         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-  #     - name: List files in the repository
-  #       run: ls ${{ github.workspace }}
+  Failed:
+    needs: build
+    if: failure() #if any our job fail
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
 
-  #     # undo commit in git actions
-  #     - name: Delete the commit
-  #       run: |
-  #         chmod +x ./rev.sh
-  #         ./rev.sh
-  #       shell: bash
+      # undo commit in git actions
+      - name: Delete the commit
+        run: |
+          chmod +x ./rev.sh
+          ./rev.sh
+        shell: bash
 
   Success:
     needs: build
@@ -69,24 +69,3 @@ jobs:
       - name: Deployed
         run: |
           echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
-  Undo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          ref: ${{ github.event.inputs.branch }}
-          fetch-depth: 0
-
-      - name: Undo Push
-        uses: exions/undo-push@v1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          git config --global user.email "kumar@rivan.in"
-          git config --global user.name "naga-phani0"
-          branch: ${{ github.event.inputs.branch }}
