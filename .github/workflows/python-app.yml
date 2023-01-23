@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       - name: List files in the repository
         run: ls ${{ github.workspace }}
