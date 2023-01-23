@@ -79,12 +79,10 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
-          
+
       - name: Undo Push
         uses: exions/undo-push@v1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           branch: ${{ github.event.inputs.branch }}
-        run: |
-          chmod +x ./rev.sh
-          ./rev.sh
-        shell: bash
