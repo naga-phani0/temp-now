@@ -1,13 +1,16 @@
 # /bin/bash
 
-git init
+# git init
 
-git remote add origin https://github.com/naga-phani0/temp-now.git #add file name temp-now
+git config --global user.email "kumar@rivan.in"
+git config --global user.name "naga-phani0"
+
+# git remote add origin https://github.com/naga-phani0/temp-now.git #add file name temp-now
 
 git revert --no-edit HEAD
 
- git add .
+git add .
 
-git commit -m 'reverted'
+git commit -m 'Sucessfully reverted'
 
-git puch -u origin main
+git push -u origin main
