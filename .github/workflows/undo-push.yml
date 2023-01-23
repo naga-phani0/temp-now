@@ -4,7 +4,7 @@ on:
     inputs:
       branch:
         description: "Branch to undo commit"
-        required: true
+        required: false
         default: "master"
 
 jobs:
@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       - name: Undo Push
         uses: exions/undo-push@v1
         with:
