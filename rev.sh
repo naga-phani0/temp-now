@@ -8,12 +8,8 @@ git config --global user.name "naga-phani0"
 # git remote add origin https://github.com/naga-phani0/temp-now.git #add file name temp-now
 
 
-# git revert --no-edit HEAD
+git revert --no-edit HEAD~
 
-
-# go back to last git commit
-
-git checkout -b master
 
 
 # git add .
