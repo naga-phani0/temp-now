@@ -11,8 +11,20 @@ git config --global user.name "naga-phani0"
 # git revert --no-edit HEAD~1
 # git reset --hard HEAD~1 master
 
-git reset --hard HEAD~1
-git push -f
+git reset --hard HEAD
+
+# git checkout master
+
+git checkout master
+
+# git pull origin master
+
+git pull origin master
+
+# git checkout master
+
+# git push -f #to puch
+
 # + git push --force
 
 # git add .
