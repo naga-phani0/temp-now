@@ -10,12 +10,11 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on:  ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -39,20 +38,22 @@ jobs:
           do
             pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
           done
-#    - name: Lint with pylint
+#    - name: Lint with pylint.
 #      run: |
 #        python pylin.py
-    - name: Checking unwanted methods or credentials in files
+    - name: Checking unwanted methods or credentials in files.
       run: |
         python check.py
-
   Failed:
     needs: build
     if: failure() #if any our job fail
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       - name: List files in the repository
-        run: ls
+        run: ls ${{ github.workspace }}
 
       - name: Deleting The Commit
         run: |
