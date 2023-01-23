@@ -4,9 +4,16 @@ on:
     types: [created]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Checking unwanted methods or credentials in files.
+        run: |
+          python check.py
+
   revert-commit:
     runs-on: ubuntu-latest
-
     if: failure()
     steps:
       - name: Checkout latest code
