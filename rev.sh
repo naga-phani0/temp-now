@@ -10,14 +10,11 @@ git config --global user.name "naga-phani0"
 
 # git revert --no-edit HEAD~1
 # git reset --hard HEAD~1 master
-git reset HEAD^ --hard
-git push origin -f
-# + git branch refs/heads/main
-# + git config --global user.name 'github-actions[bot]'
-# + git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-# + git reset --hard 'HEAD~1'
-# HEAD is now at 06fb85f fine monday
+
+git reset --hard 'HEAD~1'
+git push -f
 # + git push --force
+
 # git add .
 
 # git commit -m 'Sucessfully reverted'
