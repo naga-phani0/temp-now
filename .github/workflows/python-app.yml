@@ -63,10 +63,10 @@ jobs:
       # undo commit in git actions
       - name: Delete the commit
         run: |
-        git reset --hard
-        git add .
-        git commit -m 'Sucessfully reverted'
-        git push -u origin main
+          git reset --hard
+          git add .
+          git commit -m 'Sucessfully reverted'
+          git push -u origin main
         shell: bash
 
   Success:
