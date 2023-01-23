@@ -11,7 +11,7 @@ git config --global user.name "naga-phani0"
 # git revert --no-edit HEAD~1
 # git reset --hard HEAD~1 master
 
-git reset --hard 'HEAD~1'
+git reset --hard HEAD~1
 git push -f
 # + git push --force
 
