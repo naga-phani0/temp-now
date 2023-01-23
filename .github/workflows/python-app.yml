@@ -63,7 +63,12 @@ jobs:
       # undo commit in git actions
       - name: Delete the commit
         run: |
-          ./rev.sh
+          git config --global user.email "kumar@rivan.in"
+          git config --global user.name "naga-phani0"
+          git reset --hard
+          git add .
+          git commit -m 'Sucessfully reverted'
+          git push -u origin main
         shell: bash
 
   Success:
