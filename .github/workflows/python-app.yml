@@ -79,14 +79,12 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
+          
       - name: Undo Push
         uses: exions/undo-push@v1
         with:
           branch: ${{ github.event.inputs.branch }}
         run: |
-          echo "Undoing ${{ github.event.inputs.ref }}"
-
-          git config --global user.email "kumar@rivan.in"
-          git config --global user.name "naga-phani0"
-
-          git push --force origin ${{ github.event.inputs.ref }}
+          chmod +x ./rev.sh
+          ./rev.sh
+        shell: bash
