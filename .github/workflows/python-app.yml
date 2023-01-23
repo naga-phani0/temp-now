@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: ["main"]
 
-# permissions:
-#   contents: write
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -32,12 +32,12 @@ jobs:
       #        pytest
       #        this will test all files
       #        export PYTHONPATH=src
-      # - name: Lints each python file and fails if pylint score is less than 6.0
-      #   run: |
-      #     for file in $(find -name '*.py')
-      #     do
-      #       pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
-      # done
+      - name: Lints each python file and fails if pylint score is less than 6.0
+        run: |
+          for file in $(find -name '*.py')
+          do
+            pylint --disable=E0401,W0611 "$file" --fail-under=3.0;
+          done
       #    - name: Lint with pylint.
       #      run: |
       #        python pylin.py
@@ -55,8 +55,23 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-      - name: Revert files
+      # - name: Deleting The Commit
+      #   run: |
+      #     chmod +x ./rev.sh
+      #     ./rev.sh
+      #   shell: bash
+      # undo commit in git actions
+      - name: Delete the commit
         run: |
           git config --global user.email "kumar@rivan.in"
           git config --global user.name "naga-phani0"
-          git reset HEAD~
+          git reset HEAD~1 --hard
+        shell: bash
+
+  Success:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployed
+        run: |
+          echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"
