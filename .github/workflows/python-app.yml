@@ -87,4 +87,6 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          git config --global user.email "kumar@rivan.in"
+          git config --global user.name "naga-phani0"
           branch: ${{ github.event.inputs.branch }}
