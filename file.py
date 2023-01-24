@@ -4,4 +4,4 @@ import requests
 
 a = [1, 2, 3, 4, 5, 6, 7, 8]
 
-print('chat tusday 5')
+print('chat tusday 6')
