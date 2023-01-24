@@ -52,26 +52,17 @@ jobs:
       - name: List files in the repository
         run: ls ${{ github.workspace }}
 
-      - name: Prevent push on test failure
-        run: |
-          echo "Tests failed, preventing push."
-          exit 1
       # undo commit in git actions
-      # - name: Delete the commit
-      #   run: |
-      #     chmod +x ./rev.sh
-      #     ./rev.sh
-      #   shell: bash
+      - name: Delete the commit
+        run: |
+          chmod +x ./rev.sh
+          ./rev.sh
+        shell: bash
 
   Success:
     needs: build
-    if: success() #if any our job success
     runs-on: ubuntu-latest
     steps:
-      - name: Push changes
-        run: |
-          git push
-
       - name: Deployed
         run: |
           echo "Your Commit ${{ github.event.head_commit.message }} is ${{ job.status }}"

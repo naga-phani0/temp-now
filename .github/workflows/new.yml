@@ -1,0 +1,22 @@
+name: Test and Push
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: python check.py
+
+      - name: Prevent push on test failure
+        if: failure()
+        run: |
+          echo "Tests failed, preventing push."
+          exit 1
+
+      - name: Push changes
+        if: success()
+        run: |
+          git push
