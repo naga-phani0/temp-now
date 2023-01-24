@@ -1,12 +1,12 @@
-name: Test and Push
+name: Unpush Commit
 on: [push]
 
 jobs:
-  test:
+  unpush:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -15,11 +15,11 @@ jobs:
 
       - name: Prevent push on test failure
         if: failure()
-        run: |
-          echo "Tests failed, preventing push."          
+        run: |          
           git config --global user.email "kumar@rivan.in"
           git config --global user.name "naga-phani0"
-          git reset --hard HEAD~
+          git reset --hard
+          git push -f origin main
 
       - name: Push changes
         if: success()
