@@ -13,8 +13,10 @@ jobs:
       - name: Prevent push on test failure
         if: failure()
         run: |
-          echo "Tests failed, preventing push."
-          git --global-config 'push.default=nothing' push
+          echo "Tests failed, preventing push."          
+          git config --global user.email "kumar@rivan.in"
+          git config --global user.name "naga-phani0"
+          git reset --hard HEAD~1
           exit 1
 
       - name: Push changes
